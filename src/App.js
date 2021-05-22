@@ -2,12 +2,14 @@ import './App.css';
 import styled from 'styled-components'
 import Header from './components/Header'
 import Wrapper from './components/Wrapper'
+import Options from './components/Options'
 
 function App() {
   return (
     <AppStyled>
       <Wrapper>
          <Header />
+         <Options />
       </Wrapper>
     </AppStyled>
   );

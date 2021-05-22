@@ -15,6 +15,7 @@ const ScoreStyled = styled.div`
     text-align: center;
     padding: 10px 0;
     border-radius: 5px;
+    width: 80px;
     small{
         color: #2A45C2;
         text-transform: uppercase;

@@ -15,8 +15,11 @@ function Header() {
 const HeaderStyled = styled.main`
   border: 3px solid rgba(255, 255, 255, .29);
   color: #ffffff;
-  padding: 2em;
+  padding: 12px;
   border-radius: .5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   h1{
       font-size: 21px;
       text-transform: uppercase;
