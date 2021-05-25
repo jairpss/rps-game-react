@@ -1,32 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import Button from './Button'
 
 function Rules() {
+    const [visible, setVisible] = useState(false);
+    function handleToggleClick() {
+        setVisible(!visible)
+    }
     return (
         <RulesStyled>
-            <Button>
-                Rules
-            </Button>
+            {
+                (visible) && (
+                    <div className='rules-overlay'>
+                        <h2>Rules</h2>
+                        <img src="./images/image-rules.svg" alt="Game Rules" />
+                        <img className='close-btn' onClick={handleToggleClick} src="./images/icon-close.svg" alt="Close Game Rules" />
+                    </div>
+                )
+            }
+            <Button onClick={handleToggleClick}/>
         </RulesStyled>
     )
 }
 
 const RulesStyled = styled.div`
     text-align:center;
+    .close-btn{
+        margin-top: 2em;
+    }
+    .rules-overlay{
+        background-color: #ffffff;
+        padding: 4em 0; 
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        h2 {
+        color: #3B4262;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 1em;
+        }
+    }   
 `;
-
-const Button = styled.div`
-    display: inline-flex;
-    border: 1px solid #ffffff;
-    border-radius: .5em;
-    min-width: 128px;
-    padding: .7em;
-    box-sizing: border-box;
-    justify-content: center;
-    cursor: pointer;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-`;
-
 
 export default Rules
