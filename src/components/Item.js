@@ -24,6 +24,8 @@ const ItemStyled = styled.div`
     background: #ffffff;
     box-shadow: 0 5px 0 ${(color) => color.border};
     cursor: pointer;
+    position: relative;
+    z-index: 2;
     &:active{
         transform: scale(.9);
     }
