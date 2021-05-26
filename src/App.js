@@ -1,3 +1,4 @@
+import React, { createContext, useState } from 'react'
 import './App.css';
 import styled from 'styled-components'
 import Header from './components/Header'
@@ -5,17 +6,26 @@ import Wrapper from './components/Wrapper'
 import Options from './components/Options'
 import Rules from './components/Rules'
 
+export const ScoreContext = createContext();
+
 function App() {
+  const [score, setScore] = useState(0)
   return (
-    <AppStyled>
-      <Wrapper>
-        <div className="app-content">
-          <Header />
-          <Options />
-          <Rules />
-        </div>  
-      </Wrapper>
-    </AppStyled>
+    <ScoreContext.Provider value={{
+      score,
+      setScore
+    }}>
+      <AppStyled>
+        <Wrapper>
+          <div className="app-content">
+            <Header />
+            <Options />
+            <Rules />
+          </div>  
+        </Wrapper>
+      </AppStyled>
+    </ScoreContext.Provider>
+    
   );
 }
 

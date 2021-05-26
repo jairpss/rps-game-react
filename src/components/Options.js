@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import styled from 'styled-components'
 import Item from './Item'
 import { WhiteButton } from './Button'
+import { ScoreContext } from './../App'
 
 const elements = [
     'paper',
@@ -10,7 +11,7 @@ const elements = [
 ]
 
 function Options() {
-    // const [score, setScore] = useState(0);
+    const { score, setScore } = useContext(ScoreContext)
     const [results, setResults] = useState('')
     const [housePick, setHousePick] = useState('default')
     const [playing, setPlaying] = useState(false);
@@ -18,11 +19,30 @@ function Options() {
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
-    function onClick(name) {
+    function launchHousePick() {
+        return new Promise((resolve, reject) => {
+          let pick
+          const interval = setInterval(() => {
+            pick = elements[getRandomInt(0, 3)]
+            setHousePick(pick)
+          }, 75)
+          setTimeout(() => {
+            clearInterval(interval)
+            resolve(pick)
+          }, 2000)
+        })
+    }
+    async function onClick(name) {
         setPlaying(true)
         setPick(name)
-    }
-
+        const house = await launchHousePick()
+        const results = playWithIA(name, house)
+        setResults(results)
+        if (results === 'win') {
+           setScore(score + 1)
+        }
+      }
+   
     function playWithIA(pick, housePick) {
         if (housePick === pick) {
           return 'draw'
@@ -58,7 +78,7 @@ function Options() {
         setResults('')
     }
     return (
-        <OptionsStyled playing={playing}>
+        <OptionsStyled playing={playing} results={(results !== '')}>
             <span className="line"></span>
             {
                 !playing ? (
@@ -70,11 +90,11 @@ function Options() {
                 ) : (
                     <>
                         <div className='in-game'>
-                            <Item name={pick}/>
+                            <Item playing={playing} name={pick}/>
                             <p>You Picked</p>
                         </div>
                         <div className='in-game'>
-                            <Item />
+                            <Item playing={playing} name={housePick}/>
                             <p>The House Picked</p>
                         </div>
                         <div className="results">
@@ -119,6 +139,11 @@ const OptionsStyled = styled.div`
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      h2{
+          text-transform: uppercase;
+          font-size: 56px;
+          margin: 10px; 
+      }
     }
     .line {
     display: ${({ playing }) => !playing ? 'block' : 'none'};
