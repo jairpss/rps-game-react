@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Button({...props}) {
+function Button({children, ...props}) {
     return (
         <ButtonStyled {...props}>
-            Rules
+            {children}
         </ButtonStyled>
     )
 }
@@ -24,6 +24,12 @@ const ButtonStyled = styled.div`
         background-color: white;
         color: #131537;
     }
+`;
+
+export const WhiteButton = styled(ButtonStyled)`
+  background: white;
+  color: #101a3f;
+  min-width: 220px;
 `;
 
 export default Button

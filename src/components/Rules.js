@@ -18,7 +18,9 @@ function Rules() {
                     </div>
                 )
             }
-            <Button onClick={handleToggleClick}/>
+            <Button onClick={handleToggleClick} className="button">
+                Rules
+            </Button>
         </RulesStyled>
     )
 }
@@ -27,6 +29,7 @@ const RulesStyled = styled.div`
     text-align:center;
     .close-btn{
         margin-top: 2em;
+        cursor: pointer;
     }
     .rules-overlay{
         background-color: #ffffff;

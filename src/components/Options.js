@@ -1,14 +1,97 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import Item from './Item'
+import { WhiteButton } from './Button'
+
+const elements = [
+    'paper',
+    'scissors',
+    'rock',
+]
 
 function Options() {
+    // const [score, setScore] = useState(0);
+    const [results, setResults] = useState('')
+    const [housePick, setHousePick] = useState('default')
+    const [playing, setPlaying] = useState(false);
+    const [pick, setPick] = useState('');
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    function onClick(name) {
+        setPlaying(true)
+        setPick(name)
+    }
+
+    function playWithIA(pick, housePick) {
+        if (housePick === pick) {
+          return 'draw'
+        }
+        if (pick === 'paper') {
+          if (housePick === 'scissors') {
+            return 'lose'
+          }
+          if (housePick === 'rock') {
+            return 'win'
+          }
+        }
+        if (pick === 'scissors') {
+          if (housePick === 'paper') {
+            return 'win'
+          }
+          if (housePick === 'rock') {
+            return 'lose'
+          }
+        }
+        if (pick === 'rock') {
+          if (housePick === 'paper') {
+            return 'lose'
+          }
+          if (housePick === 'scissors') {
+            return 'win'
+          }
+        }
+    }
+
+    function handleTryAgainClick() {
+        setPlaying(false)
+        setResults('')
+    }
     return (
-        <OptionsStyled>
+        <OptionsStyled playing={playing}>
             <span className="line"></span>
-            <Item name='paper'/>
-            <Item name='scissors'/> 
-            <Item name='rock'/>
+            {
+                !playing ? (
+                    <>
+                        <Item name='paper' onClick={onClick}/>
+                        <Item name='scissors' onClick={onClick}/> 
+                        <Item name='rock' onClick={onClick}/>
+                    </>
+                ) : (
+                    <>
+                        <div className='in-game'>
+                            <Item name={pick}/>
+                            <p>You Picked</p>
+                        </div>
+                        <div className='in-game'>
+                            <Item />
+                            <p>The House Picked</p>
+                        </div>
+                        <div className="results">
+                            {
+                                results && (
+                                    <>
+                                    <h2>YOU {results}</h2>
+                                    <WhiteButton onClick={handleTryAgainClick}>
+                                        Play Again
+                                    </WhiteButton>
+                                    </>
+                                )
+                            }
+                        </div>
+                    </>
+                )
+            }
         </OptionsStyled>
     )
 }
@@ -24,7 +107,21 @@ const OptionsStyled = styled.div`
     & div:nth-of-type(3) {
         grid-column: span 2;
     }
+    .in-game{
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: large.8em;
+        letter-spacing: 1px;
+    }
+    .results {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
     .line {
+    display: ${({ playing }) => !playing ? 'block' : 'none'};
     height: 14px;
     background: rgba(0,0,0,.2);
     position: absolute;
