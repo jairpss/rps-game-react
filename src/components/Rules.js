@@ -51,6 +51,14 @@ const RulesStyled = styled.div`
         margin-bottom: 1em;
         }
     }   
+    @media screen and (min-width: 1024px) {
+        .button{
+            float: right;
+            position: fixed;
+            right: 2em;
+            bottom: 2em;
+        }
+    }
 `;
 
 export default Rules

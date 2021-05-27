@@ -15,7 +15,7 @@ function Score() {
 const ScoreStyled = styled.div`
     background: #ffffff;
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     border-radius: 5px;
     width: 80px;
     small{
@@ -29,6 +29,15 @@ const ScoreStyled = styled.div`
         font-size: 40px;
         margin: 0;
         font-weight: 700;
+    }
+    @media screen and (min-width: 768px) {
+        padding: 10px 20px;
+        small{
+            font-size: 16px;
+        }
+        p{
+            font-size: 60px;
+        }
     }
 `;
 

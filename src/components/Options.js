@@ -101,10 +101,10 @@ function Options() {
                             {
                                 results && (
                                     <>
-                                    <h2>YOU {results}</h2>
-                                    <WhiteButton onClick={handleTryAgainClick}>
-                                        Play Again
-                                    </WhiteButton>
+                                        <h2>YOU {results}</h2>
+                                        <WhiteButton onClick={handleTryAgainClick}>
+                                            Play Again
+                                        </WhiteButton>
                                     </>
                                 )
                             }
@@ -173,6 +173,11 @@ const OptionsStyled = styled.div`
       top: 0;
       transform: rotate(-60deg);
       transform-origin: right top;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .line {
+      width: 300px;
     }
   }
 `;
