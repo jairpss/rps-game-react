@@ -51,13 +51,34 @@ const RulesStyled = styled.div`
         margin-bottom: 1em;
         }
     }   
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 768px) {
         .button{
             float: right;
             position: fixed;
             right: 2em;
             bottom: 2em;
         }
+        .rules-overlay{
+            width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            top: 0;
+            bottom: initial;
+            transform: translateY(50%);
+            padding: 2em;
+            box-sizing:border-box;
+            h2{
+                font-size: 32px;
+                align-self: flex-start;
+                margin: 0 0 1.2em 0;
+            }
+        }
+        .close-btn{
+            position: absolute;
+            right: 2em;
+            top: .8em;
+        }
+        
     }
 `;
 
