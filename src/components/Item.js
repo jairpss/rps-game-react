@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const colors = {
     paper: {
@@ -20,13 +20,15 @@ const colors = {
       }
   }
 
-function Item({ name = 'default', onClick  }) {
+function Item({ name = 'default', onClick, isShadowAnimated = false  }) {
     function handleClick(){
-        onClick(name)
+        if (onClick) {
+            onClick(name)
+        } 
     }
     const color = colors[name] 
     return (
-        <ItemStyled color={color} onClick={handleClick} name={name}>
+        <ItemStyled color={color} onClick={handleClick} name={name} isShadowAnimated={isShadowAnimated}>
             <div className='shadow'>
                 <img src={`./images/icon-${name}.svg`} alt="" />
             </div>
@@ -34,6 +36,13 @@ function Item({ name = 'default', onClick  }) {
         </ItemStyled>
     )
 }
+
+const shadows = keyframes`
+  to {
+    box-shadow: 0 0 0 40px rgba(255,255,255,.04), 0 0 0 80px rgba(255,255,255,.04), 0 0 0 120px rgba(255,255,255,.02);
+    transform:  scale(1.1);
+  }
+`
 
 const ItemStyled = styled.div`
     width: 130px;
@@ -50,6 +59,8 @@ const ItemStyled = styled.div`
     cursor: pointer;
     position: relative;
     z-index: 2;
+    ${({ isShadowAnimated }) => isShadowAnimated && 'box-shadow: 0 0 0 0px rgba(255,255,255,.04), 0 0 0 0px rgba(255,255,255,.04), 0 0 0 0px rgba(255,255,255,.02);'}
+    animation: 1s ${({ isShadowAnimated }) => isShadowAnimated ? shadows : ''} forwards;
     &:active{
         transform: scale(.9);
     }

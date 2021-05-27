@@ -90,11 +90,11 @@ function Options() {
                 ) : (
                     <>
                         <div className='in-game'>
-                            <Item playing={playing} name={pick}/>
+                            <Item playing={playing} name={pick} isShadowAnimated={(results === 'win')}/>
                             <p>You Picked</p>
                         </div>
                         <div className='in-game'>
-                            <Item playing={playing} name={housePick}/>
+                            <Item playing={playing} name={housePick} isShadowAnimated={(results === 'lose')}/>
                             <p>The House Picked</p>
                         </div>
                         <div className="results">
