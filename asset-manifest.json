@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/rps-game-react/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/rps-game-react/static/js/main.e69f7619.chunk.js",
+    "main.js.map": "/rps-game-react/static/js/main.e69f7619.chunk.js.map",
+    "runtime-main.js": "/rps-game-react/static/js/runtime-main.41329041.js",
+    "runtime-main.js.map": "/rps-game-react/static/js/runtime-main.41329041.js.map",
+    "static/js/2.03ff95c1.chunk.js": "/rps-game-react/static/js/2.03ff95c1.chunk.js",
+    "static/js/2.03ff95c1.chunk.js.map": "/rps-game-react/static/js/2.03ff95c1.chunk.js.map",
+    "index.html": "/rps-game-react/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/rps-game-react/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.03ff95c1.chunk.js.LICENSE.txt": "/rps-game-react/static/js/2.03ff95c1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.41329041.js",
+    "static/js/2.03ff95c1.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.e69f7619.chunk.js"
+  ]
+}
