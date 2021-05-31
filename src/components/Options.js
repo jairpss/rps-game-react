@@ -177,7 +177,7 @@ const OptionsStyled = styled.div`
   }
   @media screen and (min-width: 1024px) {
     .line {
-      width: 300px;
+      /* width: 300px; */
     }
   }
 `;
